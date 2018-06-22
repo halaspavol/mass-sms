@@ -34,15 +34,15 @@ class SmsContainer extends Component {
    }
    
    render() {
-
-
-
       return(
          <Aux>
             <FormWrapper 
                addNumber={this.phoneNumberChangeHandler}
-               send={this.sendMessageHandler}
-            />
+               send={this.sendMessageHandler}>
+
+                  {this.state.sms.phone_number} 
+            
+            </FormWrapper>
          </Aux>
       )
    }

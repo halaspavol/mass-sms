@@ -1,11 +1,14 @@
 import React from 'react'
+
 import './FormWrapper.sass'
+import Number from './Number/Number'
  
 const formWrapper = (props) => (
    <div className="FormBackground">
-      <input type="text" placeholder="Add number/s" name="number" onChange={props.addNumber}/>
 
-      <p></p>
+      <Number addNumber={props.addNumber}/>
+
+      <p>{props.children}</p>
       
    </div>
 )
