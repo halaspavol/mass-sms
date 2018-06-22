@@ -8,7 +8,12 @@ const formWrapper = (props) => (
 
       <Number addNumber={props.addNumber}/>
 
-      <p>{props.children}</p>
+      
+
+      <button onClick={props.send}>
+         Send
+      </button>
+
       
    </div>
 )

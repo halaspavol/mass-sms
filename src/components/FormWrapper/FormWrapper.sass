@@ -1,9 +1,22 @@
 @import './../../_colors.sass'
 
-.FormBackground 
+.FormBackground
+   display: flex
+   flex-direction: column
+   flex-flow: column
    max-width: 500px
    width: 60%
    min-height: 400px
    margin: 40px auto
    background-color: $primary-color
+   border-radius: 6px
+   box-shadow: 1px 1px 10px $sec-col-half-opacity
+
+@media (max-width: 500px) 
+   .FormBackground 
+      width: 100%
+      margin: 0
+      border-radius: 0
+      height: 100vh
+      
    

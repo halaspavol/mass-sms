@@ -1,11 +1,6 @@
 import React from 'react'
+import './Number.sass'
 
-import Aux from './../../../hoc/Auxiliary/Auxiliary'
-
-const number = (props) => (
-   <Aux>
-      <input type="text" placeholder="Add number/s" name="number" onChange={props.addNumber}/>
-   </Aux>
-)
+const number = (props) => <input type="text" className="PhoneNumber" placeholder="Add phone number/s" name="number" onChange={props.addNumber}/>
 
 export default number
