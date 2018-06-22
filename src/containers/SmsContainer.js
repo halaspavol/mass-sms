@@ -2,16 +2,27 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 import Aux from './../hoc/Auxiliary/Auxiliary'
+import FormWrapper from './../components/FormWrapper/FormWrapper'
 
 class SmsContainer extends Component {
    
-   
-   render() {
-      
-      // axios.get('v4/device/94327')
-      //    .then(res => console.log(res))
-      //    .catch(err => console.log(err))
+   state = {
+      sms: {     
+         phone_number: null,
+         message: null,
+         device_id: null
+      }
+   }
 
+   phoneNumberChangeHandler = (e) => {
+      this.setState({sms:{
+         phone_number: e.target.value
+      }})
+      console.log(this.state.sms.phone_number)
+      e.preventDefault()
+   }
+
+   sendMessageHandler = () => {
       // Posts request to send a text message
       axios.post('v4/message/send',  [{
          'phone_number': '0908600565',
@@ -20,13 +31,18 @@ class SmsContainer extends Component {
       }])
          .then(response => console.log(response))
          .catch(error => console.log(error))
+   }
+   
+   render() {
+
 
 
       return(
          <Aux>
-            <div>
-               Sem bude form
-            </div>
+            <FormWrapper 
+               addNumber={this.phoneNumberChangeHandler}
+               send={this.sendMessageHandler}
+            />
          </Aux>
       )
    }

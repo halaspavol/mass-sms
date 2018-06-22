@@ -9,6 +9,5 @@ const API_KEY = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdC
 axios.defaults.baseURL = 'https://smsgateway.me/api'
 axios.defaults.headers.common['Authorization'] = API_KEY
 
-
 ReactDOM.render(<App />, document.getElementById('root'))
 registerServiceWorker()
