@@ -6,46 +6,46 @@ import FormWrapper from './../components/FormWrapper/FormWrapper'
 
 class SmsContainer extends Component {
    
-   state = {
-      sms: {     
-         phone_number: [],
-         message: "",
-         device_id: null
-      }
+   state = {     
+      phone_number: "",
+      message: "",
+      device_id: null
    }
 
    phoneNumberChangeHandler = (e) => {
-      //saves the value of number input element
-      this.setState({sms:{
+      //saves the number value of an input element
+      this.setState({
          phone_number: e.target.value
-      }})
-      //prevents default refreshing of the page
-
+      })
    }
 
-   sendMessageHandler = () => {
-      // Posts request to send a text message
-
-      // axios.post('v4/message/send',  [{
-      //    'phone_number': '0908600565',
-      //    'message': 'Test',
-      //    'device_id': 123
-      // }])
-      //    .then(response => console.log(response))
-      //    .catch(error => console.log(error))
-
-      let num = this.state.sms.phone_number
-      let arr = num.split(',')
-
-      let objArr = arr.map(num => {
-        return {
-           phone_number: num,
-           message: 'djavscg',
-           device: 123
-        } 
+   messageTextHandler = (e) => {
+      this.setState({
+            message: e.target.value
       })
 
-      console.log(objArr)
+      console.log(this.state.message)
+   }
+
+   // Posts request to send a text message
+   sendMessageHandler = () => {
+
+      // gets phone number from state
+      let a = this.state.phone_number
+      // splits string to an array of phone numbers 
+      let arr = a.split(',')
+      // posts request with the data from the state
+
+      
+      axios.post('v4/message/send', arr.map(num => {
+         return {
+            'phone_number': num,
+            'message': 'Test',
+            'device_id': 94327
+         }
+      }))
+         .then(response => console.log(response))
+         .catch(error => console.log(error))
 
    }
    
@@ -54,11 +54,8 @@ class SmsContainer extends Component {
          <Aux>
             <FormWrapper 
                addNumber={this.phoneNumberChangeHandler}
-               send={this.sendMessageHandler}>
-
-                  {this.state.sms.phone_number} 
-            
-            </FormWrapper>
+               addMessage={this.messageTextHandler}
+               send={this.sendMessageHandler} />
          </Aux>
       )
    }
