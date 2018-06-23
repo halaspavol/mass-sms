@@ -9,7 +9,7 @@ class SmsContainer extends Component {
    state = {     
       phone_number: "",
       message: "",
-      device_id: null
+      device_id: 94327
    }
 
    phoneNumberChangeHandler = (e) => {
@@ -36,18 +36,26 @@ class SmsContainer extends Component {
       let arr = a.split(',')
       // posts request with the data from the state
 
+      let mess = this.state.message
+      let devId = this.state.device_id
       
-      axios.post('v4/message/send', arr.map(num => {
-         return {
-            'phone_number': num,
-            'message': 'Test',
-            'device_id': 94327
-         }
-      }))
-         .then(response => console.log(response))
-         .catch(error => console.log(error))
-
+      // prevention to send blank messages
+      if (mess !== "" && devId !== "") {
+         axios.post('v4/message/send', arr.map(num => {
+            return {
+               'phone_number': num,
+               'message': mess,
+               'device_id': devId
+            }
+         }))
+               .then(response => console.log(response))
+               .catch(error => console.log(error))
+   
+      } else {
+         alert("Phone number or text area should not be blank")
+      }
    }
+      
    
    render() {
       return(
