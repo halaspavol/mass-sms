@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 
-import Aux from './../hoc/Auxiliary/Auxiliary'
+import './SmsContainer.sass'
 import FormWrapper from './../components/FormWrapper/FormWrapper'
 
 class SmsContainer extends Component {
@@ -23,8 +23,6 @@ class SmsContainer extends Component {
       this.setState({
             message: e.target.value
       })
-
-      console.log(this.state.message)
    }
 
    // Posts request to send a text message
@@ -59,12 +57,12 @@ class SmsContainer extends Component {
    
    render() {
       return(
-         <Aux>
+         <div className="Container">
             <FormWrapper 
                addNumber={this.phoneNumberChangeHandler}
                addMessage={this.messageTextHandler}
                send={this.sendMessageHandler} />
-         </Aux>
+         </div>
       )
    }
 }
