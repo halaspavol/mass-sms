@@ -1,0 +1,21 @@
+@import './../../../../_colors.sass'
+.Message
+   font-family: $font-stack
+   font-size: 10pt
+   width: 60%
+   height: 60px
+   margin: auto
+   padding: 5px
+   border: none
+   border-radius: 6px
+   resize: none
+   text-align: center
+   transition: ease-in 0.3s all
+
+.Message:hover,
+.Message:focus 
+   width: 70% 
+   height: 70px
+   background-color: $secondary-color
+   box-shadow: 1px 1px 6px $secondary-color
+   color: white
