@@ -4,33 +4,25 @@ import Aux from './../../../../hoc/Auxiliary/Auxiliary'
 import './Device.sass'
 
 const device = (props) => { 
-   
-   let devices
+   let devices,loading 
    let devs = props.devs
 
-   while(props.devs !== null) {
-      
-      devices = devs.map(devId => {
-      
+   if (devs !== null && devs !== "") {
+      devices = devs.map(devId => {  
          return(
-      
             <option key={devId}>{devId}</option>
-      
          )
       })
-
-      break
-      
+   } else {
+      loading = true
    }
 
-
-   
    return (
 
-      <Aux> 
-         <select name="devices" id="device">
-            {devices}
-         </select>
+      <Aux>
+         <h3 id="text">Choose your device</h3>
+         {loading ? (<h3>Loading...</h3>) : (<select className="Devices" name="devices" id="devices"> {devices} </select>)}
+         
       </Aux>   
    )
 }
