@@ -21,9 +21,9 @@ const device = (props) => {
 
       <Aux>
          <h3 id="text">Choose your device</h3>
-         {loading ? (<h3>Loading...</h3>) : (<select className="Devices" name="devices" id="devices"> {devices} </select>)}
-         
+         {loading ? (<h3>Loading...</h3>) : (<select className="Devices" name="devices" id="devices"> {devices} </select>)}       
       </Aux>   
+      
    )
 }
 

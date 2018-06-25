@@ -29,8 +29,6 @@ class SmsContainer extends Component {
       this.setState({
          phone_number: e.target.value
 		})
-		
-		console.log(this.state.phone_number)
    }
 
    messageTextHandler = (e) => {
@@ -45,14 +43,14 @@ class SmsContainer extends Component {
       // gets informations from state
       let phoneNumber = this.state.phone_number
 		let mess = this.state.message
-		let devId = this.state.device_id
-
+		let devId = document.getElementById("devices").value
+		console.log(devId)
       // splits string to an array of phone numbers 
       let arr = phoneNumber.split(',')
 		
 		// posts request with the data from the state
 		
-		if (phoneNumber !== "" && mess !== "" && devId !== null && devId !== isNaN) /*prevention for blank messages*/ {
+		if ( (phoneNumber !== "") && (mess !== "") && (devId !== null) && (devId !== isNaN) ) /*prevention for blank messages*/ {
 			axios.post('v4/message/send', arr.map(num => {
 				return {
 					'phone_number': num,
@@ -60,10 +58,10 @@ class SmsContainer extends Component {
 					'device_id': devId
 				}
 			}))
-				.then(response => console.log(response))
-				.catch(error => console.log(error))
+				.then( alert("Succesfully sent") )
+				.catch( alert("There was some problem with sending... Try again!") )
 		} else {
-			alert('Every field must be filled')
+			alert("Cannot be send. Please, fill the form fully")
 		}
 			
 	}
@@ -71,6 +69,7 @@ class SmsContainer extends Component {
    render() {
 
 		return(
+
          <div className="Container">
             <FormWrapper 
                addNumber={this.phoneNumberChangeHandler}
